@@ -1,13 +1,13 @@
-package proyecto2.pr2;
+package com.springboot.inventarioapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Proyecto2Application {
+public class SpringbootInventarioappApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Proyecto2Application.class, args);
+		SpringApplication.run(SpringbootInventarioappApplication.class, args);
 	}
 
 }
