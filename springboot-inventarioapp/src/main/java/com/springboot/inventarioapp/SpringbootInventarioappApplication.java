@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-public class SpringbootInventarioappApplication implements CommandLineRunner {
+public class SpringbootInventarioappApplication implements CommandLineRunner{
 
 	@Autowired
 	private BCryptPasswordEncoder passEncoder;
@@ -16,13 +16,19 @@ public class SpringbootInventarioappApplication implements CommandLineRunner {
 		SpringApplication.run(SpringbootInventarioappApplication.class, args);
 	}
 
+	
+	
 	@Override
 	public void run(String... args) throws Exception {
-		String pass1= "user";
-		String pass2= "admin";
+		// TODO Auto-generated method stub
+		String pass1 ="user";
+		String pass2 ="admin";
+	/*
 		
 		System.out.println(passEncoder.encode(pass1));
 		System.out.println(passEncoder.encode(pass2));
+		*/
 	}
+
 
 }

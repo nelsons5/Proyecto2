@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">		
+		<h1 th:text="${titulo}"></h1>		
+	</div>
+	
+	<div class="container">
+		
+		<a class="btn btn-primary btn-sm" th:href="@{/views/productos/create}"
+			th:text="'Ingresar Producto'" title="Crear Nuevo Registro">
+		</a>
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id Producto</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">Fecha Ingreso</th>
+					<th scope="col">Cantidad</th>
+					<th scope="col">Acciones</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pr:${productos}">
+					<th scope="row" th:text="${pr.id}"></th>
+					<th scope="row" th:text="${pr.descripcion}"></th>
+					<td th:text="${pr.fecha}"></td>
+					<td th:text="${pr.cantidad}"></td>
+					<td>
+				
+						<a class="btn btn-success btn-sm" th:href="@{/views/productos/edit/} + ${pr.id}"
+							th:text="'Editar'" title="Modificar">
+						</a> 	
+						<a class="btn btn-danger btn-sm" th:href="@{/views/productos/delete/} + ${pr.id}"
+						onclick="return confirm('Esta seguro de eliminar el registro?');"
+						th:text="'Eliminar'" title="Eliminar">		
+							
+						</a> 
+					</td>	
+			
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>
