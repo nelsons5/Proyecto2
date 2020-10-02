@@ -25,15 +25,25 @@ private BCryptPasswordEncoder passEncoder;
 protected void configure(HttpSecurity http) throws Exception {
 	
 	// Proteccion de las rutas
-	//http.authorizeRequests().antMatchers("").permitAll().antMatchers("/css/**","/js/**","/images/**","/","/home","/views/productos/").hasAnyRole("USER");
+
 	http.authorizeRequests()
 	
 	.antMatchers("/","/home","/css/**","/js/**","/images/**").permitAll()
 	.antMatchers("/views/productos/").hasAnyRole("USER")
+	.antMatchers("/views/tiendas/").hasAnyRole("USER")
+	.antMatchers("/views/empleados/").hasAnyRole("USER")
 	.antMatchers("/views/productos/create").hasAnyRole("ADMIN")
+	.antMatchers("/views/tiendas/create").hasAnyRole("ADMIN")
+	.antMatchers("/views/empleados/create").hasAnyRole("ADMIN")
 	.antMatchers("/views/productos/save").hasAnyRole("ADMIN")
+	.antMatchers("/views/tiendas/save").hasAnyRole("ADMIN")
+	.antMatchers("/views/empleados/save").hasAnyRole("ADMIN")
 	.antMatchers("/views/productos/edit/**").hasAnyRole("ADMIN")
+	.antMatchers("/views/tiendas/edit/**").hasAnyRole("ADMIN")
+	.antMatchers("/views/tiendas/empleados/**").hasAnyRole("ADMIN")
 	.antMatchers("/views/productos/delete/**").hasAnyRole("ADMIN")
+	.antMatchers("/views/tiendas/delete/**").hasAnyRole("ADMIN")
+	.antMatchers("/views/tiendas/empleados/**").hasAnyRole("ADMIN")
 	.anyRequest().authenticated()
 	.and().formLogin().loginPage("/login").permitAll()
 	.and().logout().permitAll();

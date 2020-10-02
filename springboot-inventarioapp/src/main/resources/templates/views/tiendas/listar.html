@@ -12,33 +12,33 @@
 	
 	<div class="container">
 		
-		<a class="btn btn-primary btn-sm" th:href="@{/views/productos/create}"
-			th:text="'Ingresar Producto'" title="Crear Nuevo Registro">
+		<a class="btn btn-primary btn-sm" th:href="@{/views/tiendas/create}"
+			th:text="'Ingresar Tienda'" title="Crear Nuevo Registro">
 		</a>
 		
 		<table class="table" id="datat">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Id Producto</th>
-					<th scope="col">Descripcion</th>
-					<th scope="col">Fecha Ingreso</th>
-					<th scope="col">Cantidad</th>
+					<th scope="col">Id Tienda</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Direccion</th>
+					<th scope="col">Telefono</th>
 					<th scope="col">Acciones</th>
 					
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="pr:${productos}">
-					<th scope="row" th:text="${pr.id}"></th>
-					<th scope="row" th:text="${pr.descripcion}"></th>
-					<td th:text="${pr.fecha}"></td>
-					<td th:text="${pr.cantidad}"></td>
+				<tr th:each="tn:${tiendas}">
+					<th scope="row" th:text="${tn.id}"></th>
+					<th scope="row" th:text="${tn.nombre}"></th>
+					<td th:text="${tn.direccion}"></td>
+					<td th:text="${tn.telefono}"></td>
 					<td>
 				
-						<a class="btn btn-success btn-sm" th:href="@{/views/productos/edit/} + ${pr.id}"
+						<a class="btn btn-success btn-sm" th:href="@{/views/tiendas/edit/} + ${tn.id}"
 							th:text="'Editar'" title="Modificar">
 						</a> 	
-						<a class="btn btn-danger btn-sm" th:href="@{/views/productos/delete/} + ${pr.id}"
+						<a class="btn btn-danger btn-sm" th:href="@{/views/tiendas/delete/} + ${tn.id}"
 						onclick="return confirm('Esta seguro de eliminar el registro?');"
 						th:text="'Eliminar'" title="Eliminar">		
 							
