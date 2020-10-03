@@ -44,6 +44,11 @@ protected void configure(HttpSecurity http) throws Exception {
 	.antMatchers("/views/productos/delete/**").hasAnyRole("ADMIN")
 	.antMatchers("/views/tiendas/delete/**").hasAnyRole("ADMIN")
 	.antMatchers("/views/tiendas/empleados/**").hasAnyRole("ADMIN")
+	.antMatchers("/views/ingresos/delete/**").hasAnyRole("ADMIN")
+	.antMatchers("/views/ingresos/edit/**").hasAnyRole("ADMIN")
+	.antMatchers("/views/ingresos/save").hasAnyRole("ADMIN")
+	.antMatchers("/views/ingresos/create").hasAnyRole("ADMIN")
+	.antMatchers("/views/ingresos/").hasAnyRole("USER")
 	.anyRequest().authenticated()
 	.and().formLogin().loginPage("/login").permitAll()
 	.and().logout().permitAll();

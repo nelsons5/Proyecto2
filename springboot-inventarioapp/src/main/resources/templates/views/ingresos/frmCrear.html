@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+	
+	<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+	
+		<form th:action="@{/views/ingresos/save}" th:object="${ingreso}" method="post">
+		  
+					
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="producto">Producto:</label> 
+				<select th:field="*{producto}" class="form-control form-control-sm col-md-6" id="producto"> 
+					<option th:each="producto:${productos}"
+						th:value="${producto.id}"
+						th:text="${producto.descripcion}"	
+					/>					
+				</select>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="producto">Tienda:</label> 
+				<select th:field="*{tienda}" class="form-control form-control-sm col-md-6" id="tienda"> 
+					<option th:each="tienda:${tiendas}"
+						th:value="${tienda.id}"
+						th:text="${tienda.nombre}"		
+					/>					
+				</select>
+			</div>
+			
+			<div class="form-group row">
+		
+			
+				<input type="hidden" th:field="*{id}">
+				<label class="col-md-2" for="cantidad">Cantidad:</label> 
+				<input type="text" th:field="*{cantidad}" class="form-control form-control-sm col-md-6" id="cantidad"
+					placeholder="Ingrese cantidad"> 
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('cantidad')}"
+						th:errors="*{nombres}">
+					</small>
+			</div>
+
+			<div class="form-group row">
+		
+			<label class="col-md-2" for="observacion">Ingrese Observacion:</label> 
+				<input type="text" th:field="*{observacion}" class="form-control form-control-sm col-md-6" id="observacion"
+					placeholder="Ingrese Observacion"> 
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('observacion')}"
+						th:errors="*{observacion}">
+					</small>
+			</div>		
+			
+			
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-primary btn-sm" value="Guardar">
+			</div>
+			
+		</form>
+		</div>
+	</div>
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>
