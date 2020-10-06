@@ -21,7 +21,7 @@
 					<th scope="col">Id Empleado</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Apellido</th>
-					<th scope="col">Id Tienda</th>
+					<th scope="col">Tienda</th>
 					<th scope="col">Acciones</th>
 					
 				</tr>
@@ -31,7 +31,7 @@
 					<th scope="row" th:text="${pr.id}"></th>
 					<th scope="row" th:text="${pr.nombre}"></th>
 					<td th:text="${pr.apellido}"></td>
-					<td th:text="${pr.id_tienda}"></td>
+					<td th:text="${pr.tienda.nombre}"></td>
 					<td>
 				
 						<a class="btn btn-info btn-sm" th:href="@{/views/empleados/edit/} + ${pr.id}"

@@ -13,13 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.inventarioapp.models.entity.Empleado;
+import com.springboot.inventarioapp.models.entity.Tienda;
 import com.springboot.inventarioapp.models.service.IEmpleadoService;
+import com.springboot.inventarioapp.models.service.ITiendaService;
 
 @Controller
 @RequestMapping("/views/empleados")
 public class EmpleadoController {
 	@Autowired
 	private IEmpleadoService empleadoService;
+	
+	@Autowired
+	private ITiendaService tiendaService;
+	
 	@GetMapping("/")
 	public String listarEmpleados(Model model) {
 		List<Empleado> listadoEmpleados= empleadoService.listarTodos();
@@ -33,9 +39,11 @@ public class EmpleadoController {
 	public String crear(Model model) {
 
 		Empleado empleado = new Empleado();
+		List<Tienda> listTiendas = tiendaService.listarTodos();
+		
 		model.addAttribute("titulo", "Agregar empleado");
 		model.addAttribute("empleado", empleado);
-		
+		model.addAttribute("tiendas", listTiendas);
 		
 		return "/views/empleados/frmCrear";
 	}
@@ -43,11 +51,13 @@ public class EmpleadoController {
 	@PostMapping("/save")
 	public String guardar(@ModelAttribute Empleado empleado, BindingResult result,
 			Model model, RedirectAttributes attribute) {
-	
+		List<Tienda> listTiendas = tiendaService.listarTodos();
+
 
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Ingreso nuevo empleado");
 			model.addAttribute("empleado", empleado);
+			model.addAttribute("tiendas", listTiendas);
 			System.out.println("Informacion no valida");			
 			return "/views/empleados/frmCrear";
 		}
@@ -77,11 +87,11 @@ public class EmpleadoController {
 			attribute.addFlashAttribute("error", "ATENCION: Error con el ID del empleado");
 			return "redirect:/views/empleados/";
 		}
-		
+		List<Tienda> listTiendas = tiendaService.listarTodos();
 
 		model.addAttribute("titulo", "Formulario: Editar Empleado");
 		model.addAttribute("empleado", empleado);
-		
+		model.addAttribute("tiendas", listTiendas);
 
 		return "/views/empleados/frmCrear";
 	}

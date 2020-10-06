@@ -33,13 +33,15 @@
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="id_tienda">Id Tienda</label> 
-				<input type="text"  th:field="*{id_tienda}" class="form-control form-control-sm col-md-6" id="id_tienda"
-					placeholder="id_tienda Ingreso"> 
-					<small class="form-text text-danger" th:if="${#fields.hasErrors('id_tienda')}"
-						th:errors="*{id_tienda}">
-					</small>
+				<label class="col-md-2" for="producto">Tienda:</label> 
+				<select th:field="*{tienda}" class="form-control form-control-sm col-md-6" id="tienda"> 
+					<option th:each="tienda:${tiendas}"
+						th:value="${tienda.id}"
+						th:text="${tienda.nombre}"		
+					/>					
+				</select>
 			</div>
+			
 			
 
 			

@@ -1,12 +1,14 @@
 package com.springboot.inventarioapp.models.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +23,9 @@ public class Empleado implements Serializable {
 	private Long id;
 	private String nombre;
 	private String apellido;
-	private Long id_tienda;
+	@ManyToOne
+	@JoinColumn(name="id_tienda")
+	private Tienda tienda;
 	
 	public Long getId() {
 		return id;
@@ -41,17 +45,18 @@ public class Empleado implements Serializable {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public Long getId_tienda() {
-		return id_tienda;
+	public Tienda getTienda() {
+		return tienda;
 	}
-	public void setId_tienda(Long id_tienda) {
-		this.id_tienda = id_tienda;
+
+	public void setTienda(Tienda tienda) {
+		this.tienda = tienda;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "Empleados [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", id_tienda=" + id_tienda
+		return "Empleados [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", tienda=" + tienda
 				+ "]";
 	}
 	
